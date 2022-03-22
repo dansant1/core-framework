@@ -63,6 +63,7 @@ export class AppFactory implements IApp {
                 await this.#app.listen(this.#PORT);
                 Logger.warn(`Server running at port=${this.#PORT}`);
             } catch(error) {
+                Logger.error(`Error=${error.message}`);
                 this.#app.log.error(error);
                 process.exit(1);
             }
