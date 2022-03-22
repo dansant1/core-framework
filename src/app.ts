@@ -55,7 +55,7 @@ export class AppFactory implements IApp {
                 this.#app.register(mercurius, {
                     schema: this.#entryType.schema,
                     resolvers: this.#entryType.resolvers,
-                    graphiql: 'playground',
+                    graphiql: true,
                 });
             }
             try {
