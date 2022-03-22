@@ -56,10 +56,9 @@ class AppFactory {
                     __classPrivateFieldGet(this, _AppFactory_gatewayType, "f") === _shared_1.GatewayTypes.GraphQL) {
                     //@ts-ignore
                     __classPrivateFieldGet(this, _AppFactory_app, "f").register(mercurius_1.default, {
-                        path: '/graphql',
                         schema: __classPrivateFieldGet(this, _AppFactory_entryType, "f").schema,
                         resolvers: __classPrivateFieldGet(this, _AppFactory_entryType, "f").resolvers,
-                        graphiql: 'playground',
+                        graphiql: true,
                     });
                 }
                 try {
@@ -67,6 +66,7 @@ class AppFactory {
                     _shared_1.Logger.warn(`Server running at port=${__classPrivateFieldGet(this, _AppFactory_PORT, "f")}`);
                 }
                 catch (error) {
+                    _shared_1.Logger.error(`Error=${error.message}`);
                     __classPrivateFieldGet(this, _AppFactory_app, "f").log.error(error);
                     process.exit(1);
                 }
