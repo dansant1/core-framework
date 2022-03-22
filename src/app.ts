@@ -53,7 +53,6 @@ export class AppFactory implements IApp {
             ) {
                 //@ts-ignore
                 this.#app.register(mercurius, {
-                    path: '/graphql',
                     schema: this.#entryType.schema,
                     resolvers: this.#entryType.resolvers,
                     graphiql: 'playground',
