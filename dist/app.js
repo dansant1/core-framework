@@ -68,7 +68,16 @@ class AppFactory {
                     //@ts-ignore
                     __classPrivateFieldGet(this, _AppFactory_entryType, "f").forEach((obj) => {
                         //@ts-ignore
-                        __classPrivateFieldGet(this, _AppFactory_app, "f")[obj.method](obj.url, obj.handler);
+                        __classPrivateFieldGet(this, _AppFactory_app, "f")[obj.method](obj.url, (request, reply) => __awaiter(this, void 0, void 0, function* () {
+                            //@ts-ignore
+                            return obj.handler({
+                                metadata: {
+                                    request,
+                                    reply,
+                                },
+                                params: {},
+                            });
+                        }));
                     });
                 }
                 try {

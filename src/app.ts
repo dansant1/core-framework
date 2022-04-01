@@ -69,7 +69,19 @@ export class AppFactory implements IApp {
                 //@ts-ignore
                 this.#entryType.forEach( (obj: IRest) => {
                     //@ts-ignore
-                    this.#app[obj.method](obj.url, obj.handler);
+                    this.#app[obj.method](
+                        obj.url, 
+                        async (request: any, reply: any) => {
+                            //@ts-ignore
+                            return obj.handler({
+                                metadata: {
+                                    request,
+                                    reply,
+                                },
+                                params: {},
+                            });
+                        }
+                    );
                 });
             }
 
