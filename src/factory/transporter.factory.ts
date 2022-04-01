@@ -43,7 +43,7 @@ export class TransporterFactory {
             this.dependency === Dependency.AXIOS &&
             this.gatewayType === GatewayTypes.REST
         ) {
-            return axios[method](event, metadata);
+            return axios[method](event, metadata || {});
         } else {
             return {};
         }

@@ -27,7 +27,7 @@ class TransporterFactory {
         return __awaiter(this, void 0, void 0, function* () {
             if (this.dependency === _shared_1.Dependency.AXIOS &&
                 this.gatewayType === _shared_1.GatewayTypes.REST) {
-                return axios_1.default[method](event, metadata);
+                return axios_1.default[method](event, metadata || {});
             }
             else {
                 return {};
