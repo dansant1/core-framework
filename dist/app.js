@@ -56,9 +56,19 @@ class AppFactory {
                     __classPrivateFieldGet(this, _AppFactory_gatewayType, "f") === _shared_1.GatewayTypes.GraphQL) {
                     //@ts-ignore
                     __classPrivateFieldGet(this, _AppFactory_app, "f").register(mercurius_1.default, {
+                        //@ts-ignore
                         schema: __classPrivateFieldGet(this, _AppFactory_entryType, "f").schema,
+                        //@ts-ignore
                         resolvers: __classPrivateFieldGet(this, _AppFactory_entryType, "f").resolvers,
                         graphiql: true,
+                    });
+                }
+                if (__classPrivateFieldGet(this, _AppFactory_protocolType, "f") === _shared_1.Protocols.HTTP &&
+                    __classPrivateFieldGet(this, _AppFactory_gatewayType, "f") === _shared_1.GatewayTypes.REST) {
+                    //@ts-ignore
+                    __classPrivateFieldGet(this, _AppFactory_entryType, "f").forEach((obj) => {
+                        //@ts-ignore
+                        __classPrivateFieldGet(this, _AppFactory_app, "f")[obj.method](obj.url, obj.handler);
                     });
                 }
                 try {

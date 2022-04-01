@@ -5,6 +5,7 @@ import {
 } from './@shared';
 import { 
     IApp,
+    IRest,
 } from './contracts';
 import {
     Platforms,
@@ -23,7 +24,7 @@ export class AppFactory implements IApp {
     readonly #PORT: number;
     readonly #gatewayType: GatewayTypes;
     readonly #protocolType: Protocols;
-    readonly #entryType: ConfigGraphQL;
+    readonly #entryType: ConfigGraphQL|IRest[];
 
     constructor(appInit: ServerBuilder) {
         this.#serverType     = appInit.serverType;
@@ -53,11 +54,25 @@ export class AppFactory implements IApp {
             ) {
                 //@ts-ignore
                 this.#app.register(mercurius, {
+                    //@ts-ignore
                     schema: this.#entryType.schema,
+                    //@ts-ignore
                     resolvers: this.#entryType.resolvers,
                     graphiql: true,
                 });
             }
+
+            if (
+                this.#protocolType === Protocols.HTTP && 
+                this.#gatewayType === GatewayTypes.REST
+            ) {
+                //@ts-ignore
+                this.#entryType.forEach( (obj: IRest) => {
+                    //@ts-ignore
+                    this.#app[obj.method](obj.url, obj.handler);
+                });
+            }
+
             try {
                 await this.#app.listen(this.#PORT);
                 Logger.warn(`Server running at port=${this.#PORT}`);
