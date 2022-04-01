@@ -18,4 +18,5 @@ __exportStar(require("./endpoints"), exports);
 __exportStar(require("./logger.config"), exports);
 __exportStar(require("./gatewayTypes"), exports);
 __exportStar(require("./protocols"), exports);
+__exportStar(require("./dependencies"), exports);
 //# sourceMappingURL=index.js.map
