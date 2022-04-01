@@ -9,6 +9,10 @@ import {
     ConfigGraphQL,
 } from '../builders';
 
+import {
+    IRest,
+} from '../contracts';
+
 export class ServerBuilder {
     
     port: number;
@@ -17,7 +21,7 @@ export class ServerBuilder {
     protocolType: Protocols;
     gatewayType: GatewayTypes;
     config?: Record<string, string|number|boolean>;
-    entryType: ConfigGraphQL;
+    entryType: ConfigGraphQL|IRest[];
 
     public setPort(port: number): ServerBuilder {
         this.port = port;

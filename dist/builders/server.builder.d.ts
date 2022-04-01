@@ -1,6 +1,7 @@
 import { Platforms } from '../platforms';
 import { Protocols, GatewayTypes } from '../@shared';
 import { ConfigGraphQL } from '../builders';
+import { IRest } from '../contracts';
 export declare class ServerBuilder {
     port: number;
     prefix?: string;
@@ -8,7 +9,7 @@ export declare class ServerBuilder {
     protocolType: Protocols;
     gatewayType: GatewayTypes;
     config?: Record<string, string | number | boolean>;
-    entryType: ConfigGraphQL;
+    entryType: ConfigGraphQL | IRest[];
     setPort(port: number): ServerBuilder;
     setPrefix(prefix: string): ServerBuilder;
     setEntryType(type: ConfigGraphQL): ServerBuilder;
