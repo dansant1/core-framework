@@ -1,1 +1,1 @@
-{"version":3,"file":"rest.contract.js","sourceRoot":"","sources":["../../src/contracts/rest.contract.ts"],"names":[],"mappings":""}
+{"version":3,"file":"rest.contract.js","sourceRoot":"","sources":["../../src/contracts/rest.contract.ts"],"names":[],"mappings":";;;AAMA,IAAY,WAMX;AAND,WAAY,WAAW;IACnB,4BAAgB,CAAA;IAChB,0BAAe,CAAA;IACf,0BAAe,CAAA;IACf,8BAAiB,CAAA;IACjB,gCAAkB,CAAA;AACtB,CAAC,EANW,WAAW,GAAX,mBAAW,KAAX,mBAAW,QAMtB"}

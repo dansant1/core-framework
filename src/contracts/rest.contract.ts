@@ -3,3 +3,11 @@ export interface IRest {
     url: string,
     handler: unknown,
 }
+
+export enum HttpMethods {
+    POST    = 'post',
+    GET     = 'get',
+    PUT     = 'put',
+    PATCH   = 'patch',
+    DELETE  = 'delete',
+}
