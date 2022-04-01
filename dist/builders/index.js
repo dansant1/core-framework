@@ -16,4 +16,5 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./server.builder"), exports);
 __exportStar(require("./graphql.builder"), exports);
+__exportStar(require("./gateway.builder"), exports);
 //# sourceMappingURL=index.js.map
