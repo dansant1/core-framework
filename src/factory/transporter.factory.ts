@@ -34,11 +34,11 @@ export class TransporterFactory {
         );
     }
 
-    public emit(
+    public async emit(
         event: string,
         method?: HttpMethods,
         metadata?: Record<string, unknown>,
-    ) {
+    ): Promise<Record<string, unknown>> {
         if (
             this.dependency === Dependency.AXIOS &&
             this.gatewayType === GatewayTypes.REST
