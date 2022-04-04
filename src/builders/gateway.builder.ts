@@ -94,8 +94,8 @@ export class GatewayBuilder {
                     console.log('DATA 1=', _);
                     console.log('DATA 2=', obj);
                     return _func[1]({
-                        metadata: _, 
-                        params: obj,
+                        metadata: obj, 
+                        params: _,
                     });
                 }
             }
@@ -113,8 +113,8 @@ export class GatewayBuilder {
                     console.log('DATA 1=', _);
                     console.log('DATA 2=', obj);
                     return _func[1]({
-                        metadata: _, 
-                        params: obj,
+                        metadata: obj, 
+                        params: _,
                     });
                 }
             }
