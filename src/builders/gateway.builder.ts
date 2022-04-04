@@ -90,11 +90,14 @@ export class GatewayBuilder {
                 this.Query[_func[0]] = (
                     _: Record<string, unknown>, 
                     obj: Record<string, unknown>
-                )  => 
-                _func[1]({
-                    metadata: _, 
-                    params: obj,
-                });
+                )  => {
+                    console.log('DATA 1=', _);
+                    console.log('DATA 2=', obj);
+                    return _func[1]({
+                        metadata: _, 
+                        params: obj,
+                    });
+                }
             }
         );
     }
@@ -106,11 +109,14 @@ export class GatewayBuilder {
                 this.Mutation[_func[0]] = (
                     _: Record<string, unknown>, 
                     obj: Record<string, unknown>
-                ) => 
-                _func[1]({
-                    metadata: _, 
-                    params: obj,
-                });
+                ) => {
+                    console.log('DATA 1=', _);
+                    console.log('DATA 2=', obj);
+                    return _func[1]({
+                        metadata: _, 
+                        params: obj,
+                    });
+                }
             }
         );
     }
