@@ -52,27 +52,19 @@ class GatewayBuilder {
     buildQuery() {
         this.services_query.forEach((data) => {
             const _func = (Object.entries(data))[0];
-            this.Query[_func[0]] = (_, obj) => {
-                console.log('DATA 1=', _);
-                console.log('DATA 2=', obj);
-                return _func[1]({
-                    metadata: _,
-                    params: obj,
-                });
-            };
+            this.Query[_func[0]] = (_, obj) => _func[1]({
+                metadata: obj,
+                params: _,
+            });
         });
     }
     buildMutation() {
         this.services_mutation.forEach((data) => {
             const _func = (Object.entries(data))[0];
-            this.Mutation[_func[0]] = (_, obj) => {
-                console.log('DATA 1=', _);
-                console.log('DATA 2=', obj);
-                return _func[1]({
-                    metadata: _,
-                    params: obj,
-                });
-            };
+            this.Mutation[_func[0]] = (_, obj) => _func[1]({
+                metadata: obj,
+                params: _,
+            });
         });
     }
 }
