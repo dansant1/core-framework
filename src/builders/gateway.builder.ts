@@ -91,7 +91,10 @@ export class GatewayBuilder {
                     _: Record<string, unknown>, 
                     obj: Record<string, unknown>
                 )  => 
-                _func[1](_, obj);
+                _func[1]({
+                    metadata: _, 
+                    params: obj,
+                });
             }
         );
     }
@@ -104,7 +107,10 @@ export class GatewayBuilder {
                     _: Record<string, unknown>, 
                     obj: Record<string, unknown>
                 ) => 
-                _func[1](_, obj);
+                _func[1]({
+                    metadata: _, 
+                    params: obj,
+                });
             }
         );
     }

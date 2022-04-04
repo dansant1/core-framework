@@ -52,13 +52,19 @@ class GatewayBuilder {
     buildQuery() {
         this.services_query.forEach((data) => {
             const _func = (Object.entries(data))[0];
-            this.Query[_func[0]] = (_, obj) => _func[1](_, obj);
+            this.Query[_func[0]] = (_, obj) => _func[1]({
+                metadata: _,
+                params: obj,
+            });
         });
     }
     buildMutation() {
         this.services_mutation.forEach((data) => {
             const _func = (Object.entries(data))[0];
-            this.Mutation[_func[0]] = (_, obj) => _func[1](_, obj);
+            this.Mutation[_func[0]] = (_, obj) => _func[1]({
+                metadata: _,
+                params: obj,
+            });
         });
     }
 }
