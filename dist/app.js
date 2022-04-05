@@ -87,7 +87,7 @@ class AppFactory {
                     });
                 }
                 try {
-                    yield __classPrivateFieldGet(this, _AppFactory_app, "f").listen(__classPrivateFieldGet(this, _AppFactory_PORT, "f"));
+                    yield __classPrivateFieldGet(this, _AppFactory_app, "f").listen(__classPrivateFieldGet(this, _AppFactory_PORT, "f"), '0.0.0.0');
                     _shared_1.Logger.warn(`Server running at port=${__classPrivateFieldGet(this, _AppFactory_PORT, "f")}`);
                 }
                 catch (error) {
