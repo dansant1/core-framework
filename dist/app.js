@@ -62,6 +62,12 @@ class AppFactory {
                         resolvers: __classPrivateFieldGet(this, _AppFactory_entryType, "f").resolvers,
                         graphiql: true,
                     });
+                    //@ts-ignore
+                    __classPrivateFieldGet(this, _AppFactory_app, "f").get('/healthcheck', (request, reply) => {
+                        return {
+                            message: 'is alive graphql',
+                        };
+                    });
                 }
                 if (__classPrivateFieldGet(this, _AppFactory_protocolType, "f") === _shared_1.Protocols.HTTP &&
                     __classPrivateFieldGet(this, _AppFactory_gatewayType, "f") === _shared_1.GatewayTypes.REST) {

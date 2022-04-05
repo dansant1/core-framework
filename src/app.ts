@@ -60,6 +60,12 @@ export class AppFactory implements IApp {
                     resolvers: this.#entryType.resolvers,
                     graphiql: true,
                 });
+                //@ts-ignore
+                this.#app.get('/healthcheck', (request: any, reply: any) => {
+                    return {
+                        message: 'is alive graphql',
+                    }
+                });
             }
 
             if (
