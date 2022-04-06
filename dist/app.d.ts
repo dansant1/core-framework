@@ -4,6 +4,6 @@ export declare class AppFactory implements IApp {
     #private;
     constructor(appInit: ServerBuilder);
     static create(appInit: ServerBuilder): AppFactory;
-    listen(): Promise<void>;
+    listen(address?: string): Promise<void>;
 }
 //# sourceMappingURL=app.d.ts.map

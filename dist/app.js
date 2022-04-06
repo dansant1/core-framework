@@ -51,19 +51,21 @@ class AppFactory {
     static create(appInit) {
         return new AppFactory(appInit);
     }
-    listen() {
+    listen(address) {
         return __awaiter(this, void 0, void 0, function* () {
             if (__classPrivateFieldGet(this, _AppFactory_serverType, "f") === platforms_1.Platforms.FASTIFY) {
                 if (__classPrivateFieldGet(this, _AppFactory_protocolType, "f") === _shared_1.Protocols.HTTP &&
                     __classPrivateFieldGet(this, _AppFactory_gatewayType, "f") === _shared_1.GatewayTypes.GraphQL) {
+                    const prefix = `${__classPrivateFieldGet(this, _AppFactory_prefix, "f")}/graphql`;
+                    console.log('PREFIX=', prefix);
                     //@ts-ignore
                     __classPrivateFieldGet(this, _AppFactory_app, "f").register(mercurius_1.default, {
                         //@ts-ignore
                         schema: __classPrivateFieldGet(this, _AppFactory_entryType, "f").schema,
                         //@ts-ignore
                         resolvers: __classPrivateFieldGet(this, _AppFactory_entryType, "f").resolvers,
-                        graphiql: false,
-                        prefix: `${__classPrivateFieldGet(this, _AppFactory_prefix, "f")}/graphql`,
+                        graphiql: true,
+                        prefix,
                     });
                     //@ts-ignore
                     __classPrivateFieldGet(this, _AppFactory_app, "f").get('/healthcheck', (request, reply) => {
@@ -90,7 +92,7 @@ class AppFactory {
                     });
                 }
                 try {
-                    yield __classPrivateFieldGet(this, _AppFactory_app, "f").listen(__classPrivateFieldGet(this, _AppFactory_PORT, "f"), '0.0.0.0');
+                    yield __classPrivateFieldGet(this, _AppFactory_app, "f").listen(__classPrivateFieldGet(this, _AppFactory_PORT, "f"), address || undefined);
                     _shared_1.Logger.warn(`Server running at port=${__classPrivateFieldGet(this, _AppFactory_PORT, "f")}`);
                 }
                 catch (error) {

@@ -46,7 +46,7 @@ export class AppFactory implements IApp {
         return new AppFactory(appInit);
     }
 
-    public async listen(): Promise<void> {
+    public async listen(address?: string,): Promise<void> {
         if (
             this.#serverType === Platforms.FASTIFY
         ) {
@@ -54,14 +54,16 @@ export class AppFactory implements IApp {
                 this.#protocolType === Protocols.HTTP && 
                 this.#gatewayType === GatewayTypes.GraphQL
             ) {
+                const prefix = `${this.#prefix}/graphql`;
+                console.log('PREFIX=', prefix);
                 //@ts-ignore
                 this.#app.register(mercurius, {
                     //@ts-ignore
                     schema: this.#entryType.schema,
                     //@ts-ignore
                     resolvers: this.#entryType.resolvers,
-                    graphiql: false,
-                    prefix: `${this.#prefix}/graphql`,
+                    graphiql: true,
+                    prefix,
                 });
                 //@ts-ignore
                 this.#app.get('/healthcheck', (request: any, reply: any) => {
@@ -95,7 +97,7 @@ export class AppFactory implements IApp {
             }
 
             try {
-                await this.#app.listen(this.#PORT, '0.0.0.0');
+                await this.#app.listen(this.#PORT, address || undefined);
                 Logger.warn(`Server running at port=${this.#PORT}`);
             } catch(error) {
                 Logger.error(`Error=${error.message}`);
