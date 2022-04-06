@@ -56,8 +56,7 @@ class AppFactory {
             if (__classPrivateFieldGet(this, _AppFactory_serverType, "f") === platforms_1.Platforms.FASTIFY) {
                 if (__classPrivateFieldGet(this, _AppFactory_protocolType, "f") === _shared_1.Protocols.HTTP &&
                     __classPrivateFieldGet(this, _AppFactory_gatewayType, "f") === _shared_1.GatewayTypes.GraphQL) {
-                    const prefix = `${__classPrivateFieldGet(this, _AppFactory_prefix, "f")}/graphql`;
-                    console.log('PREFIX=', prefix);
+                    const path = `${__classPrivateFieldGet(this, _AppFactory_prefix, "f")}/graphql`;
                     //@ts-ignore
                     __classPrivateFieldGet(this, _AppFactory_app, "f").register(mercurius_1.default, {
                         //@ts-ignore
@@ -66,7 +65,7 @@ class AppFactory {
                         resolvers: __classPrivateFieldGet(this, _AppFactory_entryType, "f").resolvers,
                         graphiql: false,
                         routes: true,
-                        path: prefix,
+                        path,
                     });
                     //@ts-ignore
                     __classPrivateFieldGet(this, _AppFactory_app, "f").get('/healthcheck', (request, reply) => {

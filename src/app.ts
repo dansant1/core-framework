@@ -54,8 +54,7 @@ export class AppFactory implements IApp {
                 this.#protocolType === Protocols.HTTP && 
                 this.#gatewayType === GatewayTypes.GraphQL
             ) {
-                const prefix = `${this.#prefix}/graphql`;
-                console.log('PREFIX=', prefix);
+                const path = `${this.#prefix}/graphql`;
                 //@ts-ignore
                 this.#app.register(mercurius, {
                     //@ts-ignore
@@ -64,7 +63,7 @@ export class AppFactory implements IApp {
                     resolvers: this.#entryType.resolvers,
                     graphiql: false,
                     routes: true,
-                    path: prefix,
+                    path,
                 });
                 //@ts-ignore
                 this.#app.get('/healthcheck', (request: any, reply: any) => {
