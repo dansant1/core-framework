@@ -22,7 +22,7 @@ var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-var _AppFactory_app, _AppFactory_serverType, _AppFactory_PORT, _AppFactory_gatewayType, _AppFactory_protocolType, _AppFactory_entryType;
+var _AppFactory_app, _AppFactory_serverType, _AppFactory_prefix, _AppFactory_PORT, _AppFactory_gatewayType, _AppFactory_protocolType, _AppFactory_entryType;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppFactory = void 0;
 const _shared_1 = require("./@shared");
@@ -33,6 +33,7 @@ class AppFactory {
     constructor(appInit) {
         _AppFactory_app.set(this, void 0);
         _AppFactory_serverType.set(this, void 0);
+        _AppFactory_prefix.set(this, void 0);
         _AppFactory_PORT.set(this, void 0);
         _AppFactory_gatewayType.set(this, void 0);
         _AppFactory_protocolType.set(this, void 0);
@@ -41,6 +42,7 @@ class AppFactory {
         __classPrivateFieldSet(this, _AppFactory_gatewayType, appInit.gatewayType, "f");
         __classPrivateFieldSet(this, _AppFactory_protocolType, appInit.protocolType, "f");
         __classPrivateFieldSet(this, _AppFactory_entryType, appInit.entryType, "f");
+        __classPrivateFieldSet(this, _AppFactory_prefix, appInit.prefix, "f");
         if (appInit.serverType === platforms_1.Platforms.FASTIFY) {
             __classPrivateFieldSet(this, _AppFactory_app, (0, fastify_1.default)(appInit.config), "f");
         }
@@ -60,7 +62,8 @@ class AppFactory {
                         schema: __classPrivateFieldGet(this, _AppFactory_entryType, "f").schema,
                         //@ts-ignore
                         resolvers: __classPrivateFieldGet(this, _AppFactory_entryType, "f").resolvers,
-                        graphiql: true,
+                        graphiql: false,
+                        prefix: `${__classPrivateFieldGet(this, _AppFactory_prefix, "f")}/graphql`,
                     });
                     //@ts-ignore
                     __classPrivateFieldGet(this, _AppFactory_app, "f").get('/healthcheck', (request, reply) => {
@@ -100,5 +103,5 @@ class AppFactory {
     }
 }
 exports.AppFactory = AppFactory;
-_AppFactory_app = new WeakMap(), _AppFactory_serverType = new WeakMap(), _AppFactory_PORT = new WeakMap(), _AppFactory_gatewayType = new WeakMap(), _AppFactory_protocolType = new WeakMap(), _AppFactory_entryType = new WeakMap();
+_AppFactory_app = new WeakMap(), _AppFactory_serverType = new WeakMap(), _AppFactory_prefix = new WeakMap(), _AppFactory_PORT = new WeakMap(), _AppFactory_gatewayType = new WeakMap(), _AppFactory_protocolType = new WeakMap(), _AppFactory_entryType = new WeakMap();
 //# sourceMappingURL=app.js.map

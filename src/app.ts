@@ -21,6 +21,7 @@ import mercurius from 'mercurius';
 export class AppFactory implements IApp {
     readonly #app;
     readonly #serverType: string;
+    readonly #prefix: string;
     readonly #PORT: number;
     readonly #gatewayType: GatewayTypes;
     readonly #protocolType: Protocols;
@@ -31,6 +32,7 @@ export class AppFactory implements IApp {
         this.#gatewayType    = appInit.gatewayType;
         this.#protocolType   = appInit.protocolType;
         this.#entryType      = appInit.entryType;
+        this.#prefix         = appInit.prefix;
 
         if (appInit.serverType === Platforms.FASTIFY) {
             this.#app = fastify(appInit.config);           
@@ -58,7 +60,8 @@ export class AppFactory implements IApp {
                     schema: this.#entryType.schema,
                     //@ts-ignore
                     resolvers: this.#entryType.resolvers,
-                    graphiql: true,
+                    graphiql: false,
+                    prefix: `${this.#prefix}/graphql`,
                 });
                 //@ts-ignore
                 this.#app.get('/healthcheck', (request: any, reply: any) => {
