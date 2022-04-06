@@ -98,7 +98,7 @@ export class AppFactory implements IApp {
 
             try {
                 await this.#app.listen(this.#PORT, address || undefined);
-                Logger.warn(`Server running at port=${this.#PORT}`);
+                Logger.warn(`Service ${this.#prefix} running at PORT=${this.#PORT}`);
             } catch(error) {
                 Logger.error(`Error=${error.message}`);
                 this.#app.log.error(error);

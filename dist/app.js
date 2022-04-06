@@ -93,7 +93,7 @@ class AppFactory {
                 }
                 try {
                     yield __classPrivateFieldGet(this, _AppFactory_app, "f").listen(__classPrivateFieldGet(this, _AppFactory_PORT, "f"), address || undefined);
-                    _shared_1.Logger.warn(`Server running at port=${__classPrivateFieldGet(this, _AppFactory_PORT, "f")}`);
+                    _shared_1.Logger.warn(`Service ${__classPrivateFieldGet(this, _AppFactory_prefix, "f")} running at PORT=${__classPrivateFieldGet(this, _AppFactory_PORT, "f")}`);
                 }
                 catch (error) {
                     _shared_1.Logger.error(`Error=${error.message}`);
