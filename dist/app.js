@@ -65,7 +65,7 @@ class AppFactory {
                         //@ts-ignore
                         resolvers: __classPrivateFieldGet(this, _AppFactory_entryType, "f").resolvers,
                         graphiql: false,
-                        routes: false,
+                        routes: true,
                         path: prefix,
                     });
                     //@ts-ignore

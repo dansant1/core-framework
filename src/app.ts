@@ -63,8 +63,8 @@ export class AppFactory implements IApp {
                     //@ts-ignore
                     resolvers: this.#entryType.resolvers,
                     graphiql: false,
-                    routes: false,
-                    path: prefix,                    
+                    routes: true,
+                    path: prefix,
                 });
                 //@ts-ignore
                 this.#app.get('/healthcheck', (request: any, reply: any) => {
