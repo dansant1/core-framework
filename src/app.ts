@@ -62,8 +62,8 @@ export class AppFactory implements IApp {
                     schema: this.#entryType.schema,
                     //@ts-ignore
                     resolvers: this.#entryType.resolvers,
-                    graphiql: true,
-                    routes: true,
+                    graphiql: false,
+                    routes: false,
                     path: prefix,                    
                 });
                 //@ts-ignore

@@ -64,8 +64,8 @@ class AppFactory {
                         schema: __classPrivateFieldGet(this, _AppFactory_entryType, "f").schema,
                         //@ts-ignore
                         resolvers: __classPrivateFieldGet(this, _AppFactory_entryType, "f").resolvers,
-                        graphiql: true,
-                        routes: true,
+                        graphiql: false,
+                        routes: false,
                         path: prefix,
                     });
                     //@ts-ignore
