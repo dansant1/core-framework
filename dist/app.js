@@ -65,7 +65,8 @@ class AppFactory {
                         //@ts-ignore
                         resolvers: __classPrivateFieldGet(this, _AppFactory_entryType, "f").resolvers,
                         graphiql: true,
-                        prefix,
+                        routes: true,
+                        path: prefix,
                     });
                     //@ts-ignore
                     __classPrivateFieldGet(this, _AppFactory_app, "f").get('/healthcheck', (request, reply) => {
