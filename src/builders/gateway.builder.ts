@@ -86,16 +86,20 @@ export class GatewayBuilder {
     buildQuery() {
         this.services_query.forEach(
             (data: { key: string, handler: any }) => {
-                const _func = (Object.entries(data))[0] as any;
-                this.Query[_func[0]] = (
-                    _: Record<string, unknown>, 
-                    obj: Record<string, unknown>
-                )  => 
-                _func[1]({
-                    metadata: obj, 
-                    params: _,
+                const entries = (Object.entries(data));
+                console.log('ENTRIES=', entries);
+                entries.forEach((entry) => {
+                    const _func = entry as any;
+                    console.log('_FUNC=', _func);
+                    this.Query[_func[0]] = (
+                        _: Record<string, unknown>, 
+                        obj: Record<string, unknown>
+                    )  => 
+                    _func[1]({
+                        metadata: obj, 
+                        params: _,
+                    });
                 });
-                
             }
         );
     }
@@ -103,14 +107,19 @@ export class GatewayBuilder {
     buildMutation() {
         this.services_mutation.forEach(
             (data: { key: string, handler: any }) => {
-                const _func = (Object.entries(data))[0] as any;
-                this.Mutation[_func[0]] = (
-                    _: Record<string, unknown>, 
-                    obj: Record<string, unknown>
-                ) => 
-                _func[1]({
-                    metadata: obj, 
-                    params: _,
+                const entries = (Object.entries(data));
+                console.log('ENTRIES=', entries);
+                entries.forEach((entry) => {
+                    const _func = entry as any;
+                    console.log('_FUNC=', _func);
+                    this.Mutation[_func[0]] = (
+                        _: Record<string, unknown>, 
+                        obj: Record<string, unknown>
+                    )  => 
+                    _func[1]({
+                        metadata: obj, 
+                        params: _,
+                    });
                 });
             }
         );
