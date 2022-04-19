@@ -17,6 +17,7 @@ import {
 
 import fastify from 'fastify';
 import mercurius from 'mercurius';
+import fastifyCors from 'fastify-cors';
 
 export class AppFactory implements IApp {
     readonly #app;
@@ -64,6 +65,10 @@ export class AppFactory implements IApp {
                     graphiql: false,
                     routes: true,
                     path,
+                });
+                this.#app.register(fastifyCors, {
+                    origin: "*",
+                    methods: ["GET","POST","PUT","DELETE"]
                 });
                 //@ts-ignore
                 this.#app.get('/healthcheck', (request: any, reply: any) => {

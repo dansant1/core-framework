@@ -29,6 +29,7 @@ const _shared_1 = require("./@shared");
 const platforms_1 = require("./platforms");
 const fastify_1 = __importDefault(require("fastify"));
 const mercurius_1 = __importDefault(require("mercurius"));
+const fastify_cors_1 = __importDefault(require("fastify-cors"));
 class AppFactory {
     constructor(appInit) {
         _AppFactory_app.set(this, void 0);
@@ -66,6 +67,10 @@ class AppFactory {
                         graphiql: false,
                         routes: true,
                         path,
+                    });
+                    __classPrivateFieldGet(this, _AppFactory_app, "f").register(fastify_cors_1.default, {
+                        origin: "*",
+                        methods: ["GET", "POST", "PUT", "DELETE"]
                     });
                     //@ts-ignore
                     __classPrivateFieldGet(this, _AppFactory_app, "f").get('/healthcheck', (request, reply) => {

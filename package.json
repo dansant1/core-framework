@@ -15,6 +15,7 @@
   "author": "DAN SANT",
   "license": "ISC",
   "dependencies": {
+    "fastify-cors": "^6.0.3",
     "axios": "^0.26.0",
     "dotenv": "^10.0.0",
     "fastify": "^3.18.1",
